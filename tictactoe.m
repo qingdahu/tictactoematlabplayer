@@ -18,16 +18,23 @@ while gamestate.finish == false
     loopcounter = loopcounter +1;                                           %increment counter
     drawnow
     pause(1)                                                                %wait 1 second before going
+    
+    if loopcounter == 10
+        break
+        
+    end
 end
 
-if gamestate.turn ==1
-winningplayer = '1';
+if gamestate.finish == false
+    title('Game is a tie')  
+elseif gamestate.turn ==1 
+    title('Winner is player 1')  
 elseif gamestate.turn ==-1
-winningplayer = '2'  ;
+    title('Winner is player 2')  
 else
     print('error')
 end
-title(['Winner is player ' winningplayer])                                  
+                                
 save('game1.mat','historyofgamestate')                                      %saves the game so we can look at it later
 
 
